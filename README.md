@@ -25,3 +25,5 @@ docker build -t graffitytech/kf-notebook-pytorch:1.9.0-cuda10.2-cudnn7-runtime -
 // CUDA
 docker build -t graffitytech/kf-notebook-cuda:11.4.2-runtime-ubuntu20.04 -f Dockerfile.cuda-11.4.2-runtime-ubuntu20.04 .
 ```
+
+It's easy to push images with Docker Desktop 
