@@ -1,12 +1,15 @@
 FROM python:3.8.12-slim-buster
 
-RUN python3 -m pip install --no-cache-dir \
-  jupyterlab \
-  h5py \
-  tqdm \
-  matplotlib \
-  numpy \
-  ipywidgets
+RUN apt-get update && \ 
+  apt-get install -y --no-install-recommends \
+  zip \
+  unzip \
+  wget 
+
+COPY requirements.txt requirements.txt
+
+RUN python3 -m pip install --upgrade pip && \
+  python3 -m pip install --no-cache-dir --user -r requirements.txt
 
 ENV NB_PREFIX /
 

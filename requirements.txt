@@ -1,0 +1,7 @@
+jupyterlab
+h5py
+tqdm
+matplotlib
+numpy
+ipywidgets
+kfp

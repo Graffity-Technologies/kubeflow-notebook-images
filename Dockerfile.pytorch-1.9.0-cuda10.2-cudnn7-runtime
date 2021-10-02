@@ -1,16 +1,15 @@
-FROM nvidia/cuda:11.4.2-runtime-ubuntu20.04
+FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-runtime
 
-RUN apt-get update && \
-  apt-get install -y --no-install-recommends python3.8 python3-pip
+RUN apt-get update && \ 
+  apt-get install -y --no-install-recommends \
+  zip \
+  unzip \
+  wget 
+
+COPY requirements.txt requirements.txt
 
 RUN python3 -m pip install --upgrade pip && \
-  python3 -m pip install --no-cache-dir \
-  jupyterlab \
-  h5py \
-  tqdm \
-  matplotlib \
-  numpy \
-  ipywidgets
+  python3 -m pip install --no-cache-dir --user -r requirements.txt
 
 ENV NB_PREFIX /
 
