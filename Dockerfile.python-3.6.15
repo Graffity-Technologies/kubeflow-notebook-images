@@ -6,10 +6,10 @@ RUN apt-get update && \
   unzip \
   wget
 
-COPY requirements.txt requirements.txt
+COPY requirements_python.txt requirements_python.txt
 
 RUN python3 -m pip install --upgrade pip && \
-  python3 -m pip install --no-cache-dir --user -r requirements.txt
+  python3 -m pip install --no-cache-dir --user -r requirements_python.txt
 
 ENV NB_PREFIX /
 
