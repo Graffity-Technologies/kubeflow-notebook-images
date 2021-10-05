@@ -3,7 +3,6 @@ FROM colmap/colmap:latest
 RUN apt-get update -y  && \
   apt-get install python3 python3-pip unzip wget -y
 
-WORKDIR /app
 COPY requirements_colmap.txt requirements_colmap.txt
 
 RUN pip3 install --upgrade pip && \
