@@ -1,15 +1,17 @@
-FROM python:3.6.15-slim-buster
+FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-runtime
 
 RUN apt-get update && \ 
   apt-get install -y --no-install-recommends \
   zip \
   unzip \
-  wget
+  wget 
 
-COPY requirements_python.txt requirements_python.txt
+COPY --chown=jovyan:users requirements_python.txt requirements.txt
 
 RUN python3 -m pip install --upgrade pip && \
-  python3 -m pip install --no-cache-dir --user -r requirements_python.txt
+  python3 -m pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 8888
 
 ENV NB_PREFIX /
 
