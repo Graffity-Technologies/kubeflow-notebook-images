@@ -3,9 +3,9 @@
 Dockerfile describe notebook images for Kubeflow
 
 ```
-docker build -t graffity/kf-notebook-<NAME>:<TAG> -f Dockerfile.<EXT> .
+docker build -t <USER>/kf-notebook-<NAME>:<TAG> -f Dockerfile.<EXT> .
 
-docker push graffity/kf-notebook-<NAME>
+docker push <USER>/kf-notebook-<NAME>
 ```
 
 Images're pushed now on [Docker Hub](https://hub.docker.com/u/graffitytech)
