@@ -1,11 +1,9 @@
 FROM nvidia/cuda:11.4.2-runtime-ubuntu20.04
 
-USER root
 RUN apt-get update && \
   apt-get install -y --no-install-recommends python3.8 python3-pip
 
-USER jovyan
-COPY --chown=jovyan:users requirements.txt requirements.txt
+COPY --chown=jovyan:users requirements_python.txt requirements.txt
 
 RUN python3 -m pip install --upgrade pip && \
   python3 -m pip install --no-cache-dir -r requirements.txt

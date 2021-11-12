@@ -4,10 +4,10 @@ FROM colmap/colmap:latest
 RUN apt-get update -y  && \
   apt-get install python3 python3-pip unzip wget -y
 
-COPY requirements_colmap.txt requirements_colmap.txt
+COPY --chown=jovyan:users requirements_colmap.txt requirements.txt
 
-RUN pip3 install --upgrade pip && \
-  pip3 install -r requirements_colmap.txt
+RUN python3 -m pip install --upgrade pip && \
+  python3 -m pip install --no-cache-dir -r requirements.txt
 
 ENV NB_PREFIX /
 
