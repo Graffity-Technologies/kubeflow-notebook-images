@@ -1,3 +1,4 @@
+pyproject
 jupyter
 jupyterlab
 h5py
@@ -6,4 +7,3 @@ matplotlib
 numpy
 ipywidgets
 kfp
-awscli

@@ -1,15 +1,27 @@
 FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-runtime
 
+ENV DEBIAN_FRONTEND noninteractive \
+  TZ=Asia/Bangkok
+
 RUN apt-get update && \ 
   apt-get install -y --no-install-recommends \
   zip \
   unzip \
-  wget 
+  wget \
+  curl \
+  ffmpeg \
+  libsm6 \
+  libxext6 \
+  git-all
 
 COPY --chown=jovyan:users requirements_python.txt requirements.txt
 
 RUN python3 -m pip install --upgrade pip && \
   python3 -m pip install --no-cache-dir -r requirements.txt
+
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
 
 EXPOSE 8888
 

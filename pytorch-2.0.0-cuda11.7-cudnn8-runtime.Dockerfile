@@ -1,23 +1,23 @@
-FROM pytorch/pytorch:1.9.1-cuda11.1-cudnn8-runtime
+FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
 
 ENV DEBIAN_FRONTEND noninteractive \
-  TZ=Asia/Bangkok
+    TZ=Asia/Bangkok
 
 RUN apt-get update && \ 
-  apt-get install -y --no-install-recommends \
-  zip \
-  unzip \
-  wget \
-  curl \
-  ffmpeg \
-  libsm6 \
-  libxext6 \
-  git-all
+    apt-get install -y --no-install-recommends \
+    zip \
+    unzip \
+    wget \
+    curl \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    git-all
 
 COPY --chown=jovyan:users requirements_python.txt requirements.txt
 
 RUN python3 -m pip install --upgrade pip && \
-  python3 -m pip install --no-cache-dir -r requirements.txt
+    python3 -m pip install --no-cache-dir -r requirements.txt
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip

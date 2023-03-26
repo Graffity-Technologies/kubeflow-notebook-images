@@ -1,14 +1,23 @@
-FROM python:3.7.12-slim-buster
+FROM python:3.9.16
+
+ENV DEBIAN_FRONTEND noninteractive \
+  TZ=Asia/Bangkok
 
 RUN apt-get update && \ 
   apt-get install -y --no-install-recommends \
   zip \
   unzip \
-  wget 
+  wget \
+  curl \
+  ffmpeg \
+  libsm6 \
+  libxext6 \
+  git-all
 
 COPY --chown=jovyan:users requirements_python.txt requirements.txt
 
-RUN python3 -m pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && \
+  pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8888
 
