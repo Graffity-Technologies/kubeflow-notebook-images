@@ -14,7 +14,7 @@ RUN apt-get update && \
   libxext6 \
   git-all
 
-COPY --chown=jovyan:users requirements_python.txt requirements.txt
+COPY requirements_python.txt requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt
 
