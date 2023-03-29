@@ -1,9 +1,7 @@
 # https://github.com/colmap/colmap/blob/dev/docker/Dockerfile
 FROM graffitytech/colmap:3.6-cuda
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793 \
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9 \
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9A2FD067A2E3EF7B
 
 RUN apt-get update -y  && \
   apt-get install -y --no-install-recommends \
