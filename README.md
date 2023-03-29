@@ -2,6 +2,8 @@
 
 Dockerfile describe notebook images for Kubeflow
 
+### Now build and push docker image with GitHub Actions
+
 ### Custom Guideline
 
 https://github.com/kubeflow/kubeflow/tree/master/components/example-notebook-servers#custom-images
