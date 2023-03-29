@@ -33,7 +33,7 @@ jobs:
       run: |
         IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
         for i in "${myarray[@]}"; do
-          docker build -t graffitytech/kf-notebook-$(basename "${i}") -f $(dirname "${i}")/$(basename "${i}").Dockerfile .
+          docker build -t graffitytech/kf-notebook-$(basename "${i}") -f $(basename "${i}").Dockerfile .
         done
         
     - name: Push Dockerfiles from output
