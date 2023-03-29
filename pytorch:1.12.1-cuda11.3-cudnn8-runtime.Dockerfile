@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
+FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime
 
 ENV DEBIAN_FRONTEND noninteractive \
     TZ=Asia/Bangkok
@@ -14,7 +14,7 @@ RUN apt-get update && \
     libxext6 \
     git-all
 
-COPY --chown=jovyan:users requirements_python.txt requirements.txt
+COPY requirements_python.txt requirements.txt
 
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install --no-cache-dir -r requirements.txt

@@ -1,4 +1,4 @@
-FROM python:3.10.10
+FROM python:3.9.16
 
 ENV DEBIAN_FRONTEND noninteractive \
   TZ=Asia/Bangkok
@@ -14,7 +14,7 @@ RUN apt-get update && \
   libxext6 \
   git-all
 
-COPY --chown=jovyan:users requirements_python.txt requirements.txt
+COPY requirements_python.txt requirements.txt
 
 RUN pip install --upgrade pip && \
   pip install --no-cache-dir -r requirements.txt
