@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-runtime
+FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
 
 ENV DEBIAN_FRONTEND noninteractive \
     TZ=Asia/Bangkok
@@ -26,5 +26,6 @@ RUN ./aws/install
 EXPOSE 8888
 
 ENV NB_PREFIX /
+ENV SHELL=/bin/bash
 
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX} --NotebookApp.iopub_data_rate_limit=1.0e10"]

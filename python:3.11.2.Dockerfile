@@ -1,4 +1,4 @@
-FROM python:3.10.10
+FROM python:3.11.2
 
 ENV DEBIAN_FRONTEND noninteractive \
   TZ=Asia/Bangkok
@@ -16,11 +16,11 @@ RUN apt-get update && \
 
 COPY --chown=jovyan:users requirements_python.txt requirements.txt
 
-RUN pip install --upgrade pip && \
-  pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8888
 
 ENV NB_PREFIX /
+ENV SHELL=/bin/bash
 
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX} --NotebookApp.iopub_data_rate_limit=1.0e10"]
