@@ -21,98 +21,113 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
           
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+#     - name: Set up Docker Buildx
+#       uses: docker/setup-buildx-action@v2
+      
+    - name: Finding Dockerfiles and store to output
+      id: finding-files
+      run: |
+        echo "::set-output name=FILELIST::$(find . -name '*.Dockerfile' -print)"
+
+    - name: Build Dockerfiles from output
+      run: |
+        IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
+        for i in "${myarray[@]}"; do
+          docker build -t graffitytech/kf-notebook-$(basename "${i}") -f $(dirname "${i}")/$(basename "${i}").Dockerfile
+        done
+        
+    - name: Push Dockerfiles from output
+      run: |
+        IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
+        for i in "${myarray[@]}"; do
+          docker push graffitytech/kf-notebook-$(basename "${i}")
+        done
       
     # Pytorch Start --------------------------------------------------------------
     
-    - name: Build and push - $IMAGE_NAME
-      uses: docker/build-push-action@v4
-      env:
-        IMAGE_NAME: "pytorch:2.0.0-cuda11.7-cudnn8-runtime"
-      with:
-        context: .
-        file: ./$IMAGE_NAME.Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+#     - name: Build and push
+#       env:
+#           IMAGE_NAME: "pytorch:2.0.0-cuda11.7-cudnn8-runtime"
+#       run: >
+#         docker build -t graffitytech/kf-notebook-$IMAGE_NAME -f $IMAGE_NAME.Dockerfile .
+#         && docker push graffitytech/kf-notebook-$IMAGE_NAME
         
-    - name: Build and push - $IMAGE_NAME
-      uses: docker/build-push-action@v4
-      env:
-        IMAGE_NAME: "pytorch:1.12.1-cuda11.3-cudnn8-runtime"
-      with:
-        context: .
-        file: ./$IMAGE_NAME.Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+#     - name: Build and push
+#       env:
+#           IMAGE_NAME: "pytorch:1.12.1-cuda11.3-cudnn8-runtime"
+#       run: >
+#         docker build -t graffitytech/kf-notebook-$IMAGE_NAME -f $IMAGE_NAME.Dockerfile .
+#         && docker push graffitytech/kf-notebook-$IMAGE_NAME
         
-    - name: Build and push - $IMAGE_NAME
-      uses: docker/build-push-action@v4
-      env:
-        IMAGE_NAME: "pytorch:1.9.1-cuda11.1-cudnn8-runtime"
-      with:
-        context: .
-        file: ./$IMAGE_NAME.Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+    
         
-    - name: Build and push - $IMAGE_NAME
-      uses: docker/build-push-action@v4
-      env:
-        IMAGE_NAME: "pytorch:1.9.0-cuda10.2-cudnn7-runtime"
-      with:
-        context: .
-        file: ./$IMAGE_NAME.Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+#     - name: Build and push - $IMAGE_NAME
+#       uses: docker/build-push-action@v4
+#       env:
+#         IMAGE_NAME: "pytorch:1.9.1-cuda11.1-cudnn8-runtime"
+#       with:
+#         context: .
+#         file: ./$IMAGE_NAME.Dockerfile
+#         push: true
+#         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+        
+#     - name: Build and push - $IMAGE_NAME
+#       uses: docker/build-push-action@v4
+#       env:
+#         IMAGE_NAME: "pytorch:1.9.0-cuda10.2-cudnn7-runtime"
+#       with:
+#         context: .
+#         file: ./$IMAGE_NAME.Dockerfile
+#         push: true
+#         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
       
     # Pytorch Start --------------------------------------------------------------
     
     # Python Start --------------------------------------------------------------
     
-    - name: Build and push - $IMAGE_NAME
-      uses: docker/build-push-action@v4
-      env:
-        IMAGE_NAME: "python:3.9.16"
-      with:
-        context: .
-        file: ./$IMAGE_NAME.Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+#     - name: Build and push - $IMAGE_NAME
+#       uses: docker/build-push-action@v4
+#       env:
+#         IMAGE_NAME: "python:3.9.16"
+#       with:
+#         context: .
+#         file: ./$IMAGE_NAME.Dockerfile
+#         push: true
+#         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
         
-    - name: Build and push - $IMAGE_NAME
-      uses: docker/build-push-action@v4
-      env:
-        IMAGE_NAME: "python:3.10.10"
-      with:
-        context: .
-        file: ./$IMAGE_NAME.Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+#     - name: Build and push - $IMAGE_NAME
+#       uses: docker/build-push-action@v4
+#       env:
+#         IMAGE_NAME: "python:3.10.10"
+#       with:
+#         context: .
+#         file: ./$IMAGE_NAME.Dockerfile
+#         push: true
+#         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
         
-    - name: Build and push - $IMAGE_NAME
-      uses: docker/build-push-action@v4
-      env:
-        IMAGE_NAME: "python:3.11.2"
-      with:
-        context: .
-        file: ./$IMAGE_NAME.Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+#     - name: Build and push - $IMAGE_NAME
+#       uses: docker/build-push-action@v4
+#       env:
+#         IMAGE_NAME: "python:3.11.2"
+#       with:
+#         context: .
+#         file: ./$IMAGE_NAME.Dockerfile
+#         push: true
+#         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
       
     # Python Start --------------------------------------------------------------
     
     # CUDA Start --------------------------------------------------------------
     
-    - name: Build and push - $IMAGE_NAME
-      uses: docker/build-push-action@v4
-      env:
-        IMAGE_NAME: "cuda:12.1.0-runtime-ubuntu20.04"
-      with:
-        context: .
-        file: ./$IMAGE_NAME.Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
+#     - name: Build and push - $IMAGE_NAME
+#       uses: docker/build-push-action@v4
+#       env:
+#         IMAGE_NAME: "cuda:12.1.0-runtime-ubuntu20.04"
+#       with:
+#         context: .
+#         file: ./$IMAGE_NAME.Dockerfile
+#         push: true
+#         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
       
     # CUDA Start --------------------------------------------------------------
         
