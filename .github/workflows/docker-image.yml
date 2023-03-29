@@ -35,7 +35,7 @@ jobs:
         for i in "${myarray[@]}"; do
           file_path=$(dirname "${i}")
           file_name=$(basename "${i}")
-          docker build -t graffitytech/kf-notebook-${file_name%.*}  -f file_name .
+          docker build -t graffitytech/kf-notebook-${$file_name%.*}  -f $file_name .
         done
         
     - name: Push Dockerfiles from output
@@ -43,7 +43,7 @@ jobs:
         IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
         for i in "${myarray[@]}"; do
           file_name=$(basename "${i}")
-          docker push graffitytech/kf-notebook-${file_name%.*}
+          docker push graffitytech/kf-notebook-${$file_name%.*}
         done
       
     # Pytorch Start --------------------------------------------------------------
