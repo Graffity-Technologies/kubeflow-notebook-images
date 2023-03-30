@@ -1,8 +1,6 @@
 # https://github.com/colmap/colmap/blob/dev/docker/Dockerfile
 FROM graffitytech/colmap:3.8
 
-RUN dpkg --configure -a
-
 RUN apt-get update -y  && \
   apt-get install -y --no-install-recommends \
   zip \
@@ -12,9 +10,7 @@ RUN apt-get update -y  && \
   ffmpeg \
   libsm6 \
   libxext6 \
-  git-all \
-  python3 \
-  python3-pip
+  git-all 
 
 COPY requirements_colmap.txt requirements.txt
 
