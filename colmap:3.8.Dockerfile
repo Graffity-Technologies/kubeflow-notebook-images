@@ -1,8 +1,9 @@
 # https://github.com/colmap/colmap/blob/dev/docker/Dockerfile
 FROM graffitytech/colmap:3.8
 
-RUN apt -y upgrade && \
-  apt install -y python3-pip build-essential libssl-dev libffi-dev python3-dev python3-venv
+RUN apt install -y software-properties-common
+RUN apt update
+RUN apt install python3 python3-pip -y
 
 RUN apt-get update -y  && \
   apt-get install -y --no-install-recommends \
