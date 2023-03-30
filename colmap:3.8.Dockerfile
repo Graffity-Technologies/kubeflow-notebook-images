@@ -1,6 +1,8 @@
 # https://github.com/colmap/colmap/blob/dev/docker/Dockerfile
 FROM graffitytech/colmap:3.8
 
+RUN dpkg --configure -a
+
 RUN apt-get update -y  && \
   apt-get install -y --no-install-recommends \
   zip \
