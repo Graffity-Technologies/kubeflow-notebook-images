@@ -5,7 +5,7 @@ opencv-python
 tqdm
 matplotlib
 scipy
-scikit-learn==0.22
+scikit-learn
 h5py
 jupyterlab
 pycolmap

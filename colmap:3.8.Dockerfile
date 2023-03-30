@@ -25,7 +25,7 @@ COPY requirements_colmap.txt requirements.txt
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
   python3.9 get-pip.py
 
-RUN python3.9 -m pip install --no-cache-dir -r requirements.txt
+RUN python3.9 -m pip install -r requirements.txt
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
