@@ -2,7 +2,7 @@
 FROM graffitytech/colmap:3.8
 
 RUN apt -y upgrade && \
-  apt install -y python3-pip build-essential libssl-dev libffi-dev python3-dev
+  apt install -y python3-pip build-essential libssl-dev libffi-dev python3-dev python3-venv
 
 RUN apt-get update -y  && \
   apt-get install -y --no-install-recommends \
