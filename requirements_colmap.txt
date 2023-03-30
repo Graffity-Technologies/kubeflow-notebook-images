@@ -1,5 +1,5 @@
-torch>=1.1
-torchvision>=0.3
+torch
+torchvision
 numpy
 opencv-python
 tqdm
@@ -7,7 +7,5 @@ matplotlib
 scipy
 scikit-learn==0.22
 h5py
-gdown
 jupyterlab
-awscli
-git+https://github.com/mihaidusmanu/pycolmap@fe5b30345d5de31f9376675c68f19348149426b0
+pycolmap
