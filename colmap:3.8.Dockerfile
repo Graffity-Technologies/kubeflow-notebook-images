@@ -1,6 +1,9 @@
 # https://github.com/colmap/colmap/blob/dev/docker/Dockerfile
 FROM graffitytech/colmap:3.8
 
+RUN apt -y upgrade && \
+  apt install -y python3-pip build-essential libssl-dev libffi-dev python3-dev
+
 RUN apt-get update -y  && \
   apt-get install -y --no-install-recommends \
   zip \
@@ -14,8 +17,8 @@ RUN apt-get update -y  && \
 
 COPY requirements_colmap.txt requirements.txt
 
-RUN python3 -m pip install --upgrade pip && \
-  python3 -m pip install --no-cache-dir -r requirements.txt
+RUN pip3 --upgrade pip && \
+  pip3 install --no-cache-dir -r requirements.txt
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
