@@ -3,6 +3,8 @@
 Dockerfile describe notebook images for Kubeflow
 _____________________
 ### Now build and push docker image with GitHub Actions
+If you want to add new Dockerfile, you have to add the new file in Github Actions too.
+Go to `github/workflows/docker-image.yml` > add new docker file in `matrix`
 _____________________
 
 ### Custom Guideline

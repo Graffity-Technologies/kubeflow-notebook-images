@@ -1,7 +1,5 @@
 # https://github.com/colmap/colmap/blob/dev/docker/Dockerfile
-FROM graffitytech/colmap:3.6-cuda
-
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9A2FD067A2E3EF7B
+FROM graffitytech/colmap:3.8
 
 RUN apt-get update -y  && \
   apt-get install -y --no-install-recommends \
@@ -29,4 +27,5 @@ EXPOSE 8888
 
 ENV NB_PREFIX /
 ENV SHELL=/bin/bash
+
 CMD ["sh","-c", "jupyter lab --notebook-dir=/home/jovyan --ip=0.0.0.0 --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=${NB_PREFIX} --NotebookApp.iopub_data_rate_limit=1.0e10"]
