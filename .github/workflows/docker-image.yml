@@ -13,6 +13,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - dockerfile: ./colmap:3.5.Dockerfile
+            image: graffitytech/kf-notebook-colmap:3.5
+          - dockerfile: ./colmap:3.6.Dockerfile
+            image: graffitytech/kf-notebook-colmap:3.6
+          - dockerfile: ./colmap:3.7.Dockerfile
+            image: graffitytech/kf-notebook-colmap:3.7
           - dockerfile: ./colmap:3.8.Dockerfile
             image: graffitytech/kf-notebook-colmap:3.8
 
