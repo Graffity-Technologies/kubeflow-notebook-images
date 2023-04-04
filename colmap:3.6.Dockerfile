@@ -1,4 +1,4 @@
-FROM graffitytech/colmap:3.8-cuda11.7.0-devel-ubuntu22.04
+FROM graffitytech/colmap:3.6-cuda10.2-devel-ubuntu18.04
 
 ENV DEBIAN_FRONTEND noninteractive \
   TZ=Asia/Bangkok
