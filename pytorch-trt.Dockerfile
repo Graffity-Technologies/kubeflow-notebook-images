@@ -19,6 +19,11 @@ COPY requirements_vps.txt requirements.txt
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install --no-cache-dir -r requirements.txt
 
+# special dependencies
+RUN python3 -m pip install scikit-learn==0.22
+RUN python3 -m pip install onnx==1.14.0
+RUN python3 -m pip install onnxruntime==1.14.1
+
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
 RUN ./aws/install
