@@ -43,8 +43,11 @@ jobs:
           - dockerfile: ./pytorch:2.0.0-cuda11.7-cudnn8-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:2.0.0-cuda11.7-cudnn8-runtime
 
-          - dockerfile: ./pytorch-trt.Dockerfile
-            image: graffitytech/kf-pytorch-trt-notebook:torch2.0.0-cuda11.8-cudnn8.9.1-runtime
+          - dockerfile: ./onnx:tensorrt_provider.Dockerfile
+            image: graffitytech/onnx_tensorrt_provider
+
+          # - dockerfile: ./pytorch-trt.Dockerfile
+          #   image: graffitytech/kf-pytorch-trt-notebook:torch2.0.0-cuda11.8-cudnn8.9.1-runtime
 
     permissions:
       contents: read
