@@ -43,7 +43,7 @@ jobs:
           - dockerfile: ./pytorch:2.0.0-cuda11.7-cudnn8-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:2.0.0-cuda11.7-cudnn8-runtime
 
-          - dockerfile: ./oonnx:trt8.5_provider.Dockerfile
+          - dockerfile: ./onnx:trt8.5_provider.Dockerfile
             image: graffitytech/onnx_tensorrt8.5_provider
 
           - dockerfile: ./onnx:trt8.6_provider.Dockerfile
