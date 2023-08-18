@@ -31,7 +31,7 @@ RUN unattended-upgrade
 WORKDIR /code
 ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:/code/cmake-3.26.3-linux-x86_64/bin:/opt/miniconda/bin:${PATH}
 
-RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.5.11-Linux-x86_64.sh -O ~/miniconda.sh --no-check-certificate && \
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh -O ~/miniconda.sh --no-check-certificate && \
     /bin/bash ~/miniconda.sh -b -p /opt/miniconda &&\
     rm ~/miniconda.sh &&\
     /opt/miniconda/bin/conda clean -ya
