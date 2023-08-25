@@ -55,3 +55,7 @@ RUN git clone --single-branch --branch ${ONNXRUNTIME_BRANCH} --recursive ${ONNXR
     cd ..
 
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+RUN apt-get update && apt-get install libgl1 -y
+
+RUN pip install tensorrt==8.6.1
