@@ -16,3 +16,5 @@ pyproject
 jupyter
 jupyterlab
 kfp
+xformers==0.0.18
+timm

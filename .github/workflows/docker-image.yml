@@ -43,6 +43,9 @@ jobs:
           - dockerfile: ./pytorch:2.0.0-cuda11.7-cudnn8-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:2.0.0-cuda11.7-cudnn8-runtime
 
+          - dockerfile: ./pytorch:2.0.1-cuda11.7-cudnn8-runtime.Dockerfile
+            image: graffitytech/kf-notebook-pytorch:2.0.1-cuda11.7-cudnn8-runtime
+
     permissions:
       contents: read
       packages: write
