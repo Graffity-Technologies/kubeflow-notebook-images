@@ -31,6 +31,9 @@ jobs:
           - dockerfile: ./python:3.11.2.Dockerfile
             image: graffitytech/kf-notebook-python:3.11.2
 
+          - dockerfile: ./ubuntu:22.04.Dockerfile
+            image: graffitytech/kf-notebook-ubuntu:22.04
+
           - dockerfile: ./pytorch:1.9.0-cuda10.2-cudnn7-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:1.9.0-cuda10.2-cudnn7-runtime
 
