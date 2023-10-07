@@ -13,7 +13,8 @@ RUN apt-get update && \
   libsm6 \
   libxext6 \
   git-all \
-  python3
+  python3 \
+  python3-pip
 
 COPY requirements_python.txt requirements.txt
 
