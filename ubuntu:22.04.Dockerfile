@@ -14,7 +14,8 @@ RUN apt-get update && \
   libxext6 \
   git-all \
   python3 \
-  python3-pip
+  python3-pip \
+  xz-utils
 
 COPY requirements_python.txt requirements.txt
 
