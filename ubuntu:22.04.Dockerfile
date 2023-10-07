@@ -12,7 +12,13 @@ RUN apt-get update && \
   ffmpeg \
   libsm6 \
   libxext6 \
-  git-all
+  git-all \
+  python3
+
+COPY requirements_python.txt requirements.txt
+
+RUN python3 -m pip install --upgrade pip && \
+  python3 -m pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8888
 
