@@ -13,7 +13,6 @@ RUN ./aws/install
 
 EXPOSE 8888
 
-
 ENV NB_PREFIX /
 ENV SHELL=/bin/bash
 
