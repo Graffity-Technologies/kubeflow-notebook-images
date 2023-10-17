@@ -3,7 +3,12 @@ FROM graffitytech/pixsfm:0.1.0-cuda11.7.0-ubuntu22.04
 ENV DEBIAN_FRONTEND noninteractive \
   TZ=Asia/Bangkok
 
-RUN apt-get update -y
+RUN apt-get update -y  && \
+  apt-get install -y --no-install-recommends \
+  zip \
+  unzip \
+  wget \
+  curl
 
 COPY requirements_python.txt requirements.txt
 
