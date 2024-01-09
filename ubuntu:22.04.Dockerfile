@@ -17,6 +17,11 @@ RUN apt-get update && \
   python3-pip \
   xz-utils
 
+# AWS CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
+
 COPY requirements_python.txt requirements.txt
 
 RUN python3 -m pip install --upgrade pip && \

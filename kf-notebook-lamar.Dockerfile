@@ -1,19 +1,24 @@
 FROM graffitytech/colmap:3.8-cuda11.7.0-devel-ubuntu22.04
 
 ENV DEBIAN_FRONTEND noninteractive \
-    TZ=Asia/Bangkok
+  TZ=Asia/Bangkok
 
 RUN apt-get update && \ 
-    apt-get install -y --no-install-recommends \
-    zip \
-    unzip \
-    wget \
-    curl \
-    ffmpeg \
-    libsm6 \
-    libxext6 \
-    git-all \
-    ssh
+  apt-get install -y --no-install-recommends \
+  zip \
+  unzip \
+  wget \
+  curl \
+  ffmpeg \
+  libsm6 \
+  libxext6 \
+  git-all \
+  ssh
+
+# AWS CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
 
 RUN wget http://ceres-solver.org/ceres-solver-2.1.0.tar.gz
 # CMake
@@ -29,12 +34,12 @@ RUN apt-get -y install libsuitesparse-dev
 RUN apt-get -y install build-essential
 
 RUN tar zxf ceres-solver-2.1.0.tar.gz && \
-    mkdir ceres-bin && \
-    cd ceres-bin && \
-    cmake ../ceres-solver-2.1.0 && \
-    make -j3 && \
-    # make test && \
-    make install
+  mkdir ceres-bin && \
+  cd ceres-bin && \
+  cmake ../ceres-solver-2.1.0 && \
+  make -j3 && \
+  # make test && \
+  make install
 
 COPY requiments_lamar.txt requirements.txt
 
@@ -46,7 +51,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
   python3 get-pip.py
 
 RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install --no-cache-dir -r requirements.txt
+  python3 -m pip install --no-cache-dir -r requirements.txt
 
 RUN git clone --recursive https://github.com/cvg/Hierarchical-Localization/
 RUN cd Hierarchical-Localization/ && python3 -m pip install -e .
