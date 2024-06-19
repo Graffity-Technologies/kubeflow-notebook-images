@@ -25,8 +25,14 @@ RUN apt-get update && \
     git \
     ninja-build \
     libopencv-dev \
+    zip \
     unzip \
     wget \
+    curl \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    ssh \
     python3 \
     python3-pip \
     sudo && \
