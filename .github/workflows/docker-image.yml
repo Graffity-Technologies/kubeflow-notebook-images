@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-and-push-image:
@@ -24,10 +24,8 @@ jobs:
 
           - dockerfile: ./python:3.9.16.Dockerfile
             image: graffitytech/kf-notebook-python:3.9.16
-
           - dockerfile: ./python:3.10.10.Dockerfile
             image: graffitytech/kf-notebook-python:3.10.10
-
           - dockerfile: ./python:3.11.2.Dockerfile
             image: graffitytech/kf-notebook-python:3.11.2
 
@@ -36,21 +34,20 @@ jobs:
 
           - dockerfile: ./pytorch:1.9.0-cuda10.2-cudnn7-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:1.9.0-cuda10.2-cudnn7-runtime
-
           - dockerfile: ./pytorch:1.9.1-cuda11.1-cudnn8-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:1.9.1-cuda11.1-cudnn8-runtime
-
           - dockerfile: ./pytorch:1.12.1-cuda11.3-cudnn8-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:1.12.1-cuda11.3-cudnn8-runtime
-
           - dockerfile: ./pytorch:2.0.0-cuda11.7-cudnn8-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:2.0.0-cuda11.7-cudnn8-runtime
-
           - dockerfile: ./pytorch:2.0.1-cuda11.7-cudnn8-runtime.Dockerfile
             image: graffitytech/kf-notebook-pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
           - dockerfile: ./pixsfm:0.1.0.Dockerfile
             image: graffitytech/kf-notebook-pixsfm:0.1.0
+
+          - dockerfile: ./opensplat:latest.Dockerfile
+            image: graffitytech/kf-notebook-opensplat:latest
 
     permissions:
       contents: read
@@ -95,50 +92,49 @@ jobs:
   #     with:
   #       fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
-    # - name: Login to Docker Hub
-    #   uses: docker/login-action@v2
-    #   with:
-    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+  # - name: Login to Docker Hub
+  #   uses: docker/login-action@v2
+  #   with:
+  #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+  #     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    # https://github.com/marketplace/actions/changed-files
-    # - name: Get changed Dockerfile(s)
-    #   id: changed-files
-    #   uses: tj-actions/changed-files@V35
-    #   with:
-    #     files: |
-    #         **/*.Dockerfile
+  # https://github.com/marketplace/actions/changed-files
+  # - name: Get changed Dockerfile(s)
+  #   id: changed-files
+  #   uses: tj-actions/changed-files@V35
+  #   with:
+  #     files: |
+  #         **/*.Dockerfile
 
-    # - name: List all changed files
-    #   run: |
-    #     for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-    #       echo "$file was changed"
-    #     done
+  # - name: List all changed files
+  #   run: |
+  #     for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+  #       echo "$file was changed"
+  #     done
 
-    # - name: Finding Dockerfiles and store to output
-    #   id: finding-files
-    #   run: |
-    #     echo "::set-output name=FILELIST::$(find . -name '*.Dockerfile' -print)"
+  # - name: Finding Dockerfiles and store to output
+  #   id: finding-files
+  #   run: |
+  #     echo "::set-output name=FILELIST::$(find . -name '*.Dockerfile' -print)"
 
-    # - name: Build Dockerfiles from output
-    #   run: |
-    #     IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
-    #     for i in "${myarray[@]}"; do
-    #       export file_path=$(dirname "${i}")
-    #       export file_name=$(basename "${i}")
-    #       docker build -t graffitytech/kf-notebook-${file_name%.*}  -f $file_name .
-    #     done
+  # - name: Build Dockerfiles from output
+  #   run: |
+  #     IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
+  #     for i in "${myarray[@]}"; do
+  #       export file_path=$(dirname "${i}")
+  #       export file_name=$(basename "${i}")
+  #       docker build -t graffitytech/kf-notebook-${file_name%.*}  -f $file_name .
+  #     done
 
-    # - name: Push Dockerfiles from output
-    #   run: |
-    #     IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
-    #     for i in "${myarray[@]}"; do
-    #       export file_name=$(basename "${i}")
-    #       docker push graffitytech/kf-notebook-${file_name%.*}
-    #     done
+  # - name: Push Dockerfiles from output
+  #   run: |
+  #     IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
+  #     for i in "${myarray[@]}"; do
+  #       export file_name=$(basename "${i}")
+  #       docker push graffitytech/kf-notebook-${file_name%.*}
+  #     done
 
-    # Pytorch Start --------------------------------------------------------------
-
+  # Pytorch Start --------------------------------------------------------------
 #     - name: Build and push
 #       env:
 #           IMAGE_NAME: "pytorch:2.0.0-cuda11.7-cudnn8-runtime"
@@ -152,8 +148,6 @@ jobs:
 #       run: >
 #         docker build -t graffitytech/kf-notebook-$IMAGE_NAME -f $IMAGE_NAME.Dockerfile .
 #         && docker push graffitytech/kf-notebook-$IMAGE_NAME
-
-
 
 #     - name: Build and push - $IMAGE_NAME
 #       uses: docker/build-push-action@v4
@@ -175,9 +169,9 @@ jobs:
 #         push: true
 #         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
 
-    # Pytorch Start --------------------------------------------------------------
+# Pytorch Start --------------------------------------------------------------
 
-    # Python Start --------------------------------------------------------------
+# Python Start --------------------------------------------------------------
 
 #     - name: Build and push - $IMAGE_NAME
 #       uses: docker/build-push-action@v4
@@ -209,9 +203,9 @@ jobs:
 #         push: true
 #         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
 
-    # Python Start --------------------------------------------------------------
+# Python Start --------------------------------------------------------------
 
-    # CUDA Start --------------------------------------------------------------
+# CUDA Start --------------------------------------------------------------
 
 #     - name: Build and push - $IMAGE_NAME
 #       uses: docker/build-push-action@v4
@@ -223,6 +217,5 @@ jobs:
 #         push: true
 #         tags: ${{ secrets.DOCKERHUB_USERNAME }}/kf-notebook-$IMAGE_NAME
 
-    # CUDA Start --------------------------------------------------------------
-
+# CUDA Start --------------------------------------------------------------
 
