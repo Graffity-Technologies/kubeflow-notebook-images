@@ -13,41 +13,43 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - dockerfile: ./colmap:3.5.Dockerfile
-            image: graffitytech/kf-notebook-colmap:3.5
-          - dockerfile: ./colmap:3.6.Dockerfile
-            image: graffitytech/kf-notebook-colmap:3.6
-          - dockerfile: ./colmap:3.7.Dockerfile
-            image: graffitytech/kf-notebook-colmap:3.7
-          - dockerfile: ./colmap:3.8.Dockerfile
-            image: graffitytech/kf-notebook-colmap:3.8
+          # - dockerfile: ./colmap:3.5.Dockerfile
+          #   image: graffitytech/kf-notebook-colmap:3.5
+          # - dockerfile: ./colmap:3.6.Dockerfile
+          #   image: graffitytech/kf-notebook-colmap:3.6
+          # - dockerfile: ./colmap:3.7.Dockerfile
+          #   image: graffitytech/kf-notebook-colmap:3.7
+          # - dockerfile: ./colmap:3.8.Dockerfile
+          #   image: graffitytech/kf-notebook-colmap:3.8
 
-          - dockerfile: ./python:3.9.16.Dockerfile
-            image: graffitytech/kf-notebook-python:3.9.16
-          - dockerfile: ./python:3.10.10.Dockerfile
-            image: graffitytech/kf-notebook-python:3.10.10
-          - dockerfile: ./python:3.11.2.Dockerfile
-            image: graffitytech/kf-notebook-python:3.11.2
+          # - dockerfile: ./python:3.9.16.Dockerfile
+          #   image: graffitytech/kf-notebook-python:3.9.16
+          # - dockerfile: ./python:3.10.10.Dockerfile
+          #   image: graffitytech/kf-notebook-python:3.10.10
+          # - dockerfile: ./python:3.11.2.Dockerfile
+          #   image: graffitytech/kf-notebook-python:3.11.2
 
-          - dockerfile: ./ubuntu:22.04.Dockerfile
-            image: graffitytech/kf-notebook-ubuntu:22.04
+          # - dockerfile: ./ubuntu:22.04.Dockerfile
+          #   image: graffitytech/kf-notebook-ubuntu:22.04
 
-          - dockerfile: ./pytorch:1.9.0-cuda10.2-cudnn7-runtime.Dockerfile
-            image: graffitytech/kf-notebook-pytorch:1.9.0-cuda10.2-cudnn7-runtime
-          - dockerfile: ./pytorch:1.9.1-cuda11.1-cudnn8-runtime.Dockerfile
-            image: graffitytech/kf-notebook-pytorch:1.9.1-cuda11.1-cudnn8-runtime
-          - dockerfile: ./pytorch:1.12.1-cuda11.3-cudnn8-runtime.Dockerfile
-            image: graffitytech/kf-notebook-pytorch:1.12.1-cuda11.3-cudnn8-runtime
-          - dockerfile: ./pytorch:2.0.0-cuda11.7-cudnn8-runtime.Dockerfile
-            image: graffitytech/kf-notebook-pytorch:2.0.0-cuda11.7-cudnn8-runtime
-          - dockerfile: ./pytorch:2.0.1-cuda11.7-cudnn8-runtime.Dockerfile
-            image: graffitytech/kf-notebook-pytorch:2.0.1-cuda11.7-cudnn8-runtime
+          # - dockerfile: ./pytorch:1.9.0-cuda10.2-cudnn7-runtime.Dockerfile
+          #   image: graffitytech/kf-notebook-pytorch:1.9.0-cuda10.2-cudnn7-runtime
+          # - dockerfile: ./pytorch:1.9.1-cuda11.1-cudnn8-runtime.Dockerfile
+          #   image: graffitytech/kf-notebook-pytorch:1.9.1-cuda11.1-cudnn8-runtime
+          # - dockerfile: ./pytorch:1.12.1-cuda11.3-cudnn8-runtime.Dockerfile
+          #   image: graffitytech/kf-notebook-pytorch:1.12.1-cuda11.3-cudnn8-runtime
+          # - dockerfile: ./pytorch:2.0.0-cuda11.7-cudnn8-runtime.Dockerfile
+          #   image: graffitytech/kf-notebook-pytorch:2.0.0-cuda11.7-cudnn8-runtime
+          # - dockerfile: ./pytorch:2.0.1-cuda11.7-cudnn8-runtime.Dockerfile
+          #   image: graffitytech/kf-notebook-pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
-          - dockerfile: ./pixsfm:0.1.0.Dockerfile
-            image: graffitytech/kf-notebook-pixsfm:0.1.0
+          # - dockerfile: ./pixsfm:0.1.0.Dockerfile
+          #   image: graffitytech/kf-notebook-pixsfm:0.1.0
 
-          - dockerfile: ./opensplat:latest.Dockerfile
-            image: graffitytech/kf-notebook-opensplat:latest
+          # - dockerfile: ./opensplat:latest.Dockerfile
+          #   image: graffitytech/kf-notebook-opensplat:latest
+          - dockerfile: ./kf-notebook-glomap.Dockerfile
+            image: graffitytech/kf-notebook-glomap:pytorch2.4.1-cuda12.1-cudnn9-runtime
 
     permissions:
       contents: read
