@@ -76,12 +76,8 @@ RUN wget http://ceres-solver.org/ceres-solver-2.1.0.tar.gz && \
 
 COPY requiments_lamar.txt requirements.txt
 
-RUN apt update && \
-    apt install -y software-properties-common && \
-    add-apt-repository -y ppa:deadsnakes/ppa && \
-    apt install python3.10 python3.10-dev python3.10-distutils -y
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-    python3 get-pip.py
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install --no-cache-dir -r requirements.txt
