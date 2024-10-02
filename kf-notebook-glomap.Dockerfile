@@ -74,7 +74,7 @@ RUN wget http://ceres-solver.org/ceres-solver-2.1.0.tar.gz && \
     rm -rf ceres-solver-2.1.0 ceres-bin ceres-solver-2.1.0.tar.gz
 
 
-COPY requiments_lamar.txt requirements.txt
+COPY requiments_glomap.txt requirements.txt
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
