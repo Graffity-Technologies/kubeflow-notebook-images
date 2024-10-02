@@ -17,7 +17,7 @@ h5py
 torch>=1.1
 tqdm>=4.36.0
 opencv-python
-pycolmap==0.4.0
+pycolmap==0.6.0
 timm
 albumentations
 git+https://github.com/cvg/pyceres.git@255198c033771e93b85ee7e1ae74ff7b3441d3d7
