@@ -49,6 +49,18 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.30.1/cmake-3.30.1
     cd .. && \
     rm -rf cmake-3.30.1 cmake-3.30.1.tar.gz
 
+    # COLMAP
+ARG COLMAP_VERSION=3.8
+RUN git clone https://github.com/colmap/colmap.git && \
+    cd colmap && \
+    git checkout ${COLMAP_VERSION} && \
+    mkdir build && \
+    cd build && \
+    cmake .. -GNinja && \
+    ninja && \
+    ninja install && \
+    cd ../.. && \
+    rm -rf colmap
 
 # Ceres Solver
 RUN wget http://ceres-solver.org/ceres-solver-2.1.0.tar.gz && \
@@ -61,18 +73,6 @@ RUN wget http://ceres-solver.org/ceres-solver-2.1.0.tar.gz && \
     cd .. && \
     rm -rf ceres-solver-2.1.0 ceres-bin ceres-solver-2.1.0.tar.gz
 
-# COLMAP
-ARG COLMAP_VERSION=3.8
-RUN git clone https://github.com/colmap/colmap.git && \
-    cd colmap && \
-    git checkout ${COLMAP_VERSION} && \
-    mkdir build && \
-    cd build && \
-    cmake .. -GNinja && \
-    ninja && \
-    ninja install && \
-    cd ../.. && \
-    rm -rf colmap
 
 COPY requiments_lamar.txt requirements.txt
 
