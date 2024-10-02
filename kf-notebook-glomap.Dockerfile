@@ -86,14 +86,14 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install --no-cache-dir -r requirements.txt
 
-# GLOMAP
-RUN git clone https://github.com/colmap/glomap.git && \
-    cd glomap && \
-    mkdir build && \
-    cd build && \
-    cmake .. -GNinja && \
-    ninja && \
-    ninja install
+# # GLOMAP
+# RUN git clone https://github.com/colmap/glomap.git && \
+#     cd glomap && \
+#     mkdir build && \
+#     cd build && \
+#     cmake .. -GNinja && \
+#     ninja && \
+#     ninja install
 
 
 EXPOSE 8888
