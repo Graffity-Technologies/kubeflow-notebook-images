@@ -1,3 +1,6 @@
+# Additional Images from Official
+https://www.kubeflow.org/docs/components/notebooks/container-images/#kubeflow-images
+
 # kubeflow-notebook-images
 
 Dockerfile describe notebook images for Kubeflow
