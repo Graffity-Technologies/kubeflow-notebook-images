@@ -56,10 +56,9 @@ RUN python3 -m pip install --upgrade pip && \
 RUN git clone --recursive https://github.com/cvg/Hierarchical-Localization/
 RUN cd Hierarchical-Localization/ && python3 -m pip install -e .
 
-
-# RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-# RUN unzip awscliv2.zip
-# RUN ./aws/install
+# Install PoseLib for pose estimation
+RUN git clone --recursive https://github.com/Graffity-Technologies/PoseLib.git
+RUN cd PoseLib/ && python3.10 -m pip install .
 
 EXPOSE 8888
 
